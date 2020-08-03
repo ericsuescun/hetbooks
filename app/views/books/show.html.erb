@@ -1,0 +1,84 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @book.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @book.description %>
+</p>
+
+<p>
+  <strong>Discipline:</strong>
+  <%= @book.discipline %>
+</p>
+
+<p>
+  <strong>Topic:</strong>
+  <%= @book.topic %>
+</p>
+
+<p>
+  <strong>Specialty:</strong>
+  <%= @book.specialty %>
+</p>
+
+<p>
+  <strong>Speciality2:</strong>
+  <%= @book.speciality2 %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @book.price %>
+</p>
+
+<p>
+  <strong>Edition:</strong>
+  <%= @book.edition %>
+</p>
+
+<p>
+  <strong>Pub year:</strong>
+  <%= @book.pub_year %>
+</p>
+
+<p>
+  <strong>Isbn 10:</strong>
+  <%= @book.isbn_10 %>
+</p>
+
+<p>
+  <strong>Isbn 13:</strong>
+  <%= @book.isbn_13 %>
+</p>
+
+<p>
+  <strong>Pages:</strong>
+  <%= @book.pages %>
+</p>
+
+<p>
+  <strong>Size:</strong>
+  <%= @book.size %>
+</p>
+
+<p>
+  <strong>Cover:</strong>
+  <%= @book.cover %>
+</p>
+
+<p>
+  <strong>Volumes:</strong>
+  <%= @book.volumes %>
+</p>
+
+<p>
+  <strong>Index:</strong>
+  <%= @book.index %>
+</p>
+
+<%= link_to 'Edit', edit_book_path(@book) %> |
+<%= link_to 'Back', books_path %>
