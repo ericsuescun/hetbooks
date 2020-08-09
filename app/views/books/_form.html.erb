@@ -11,87 +11,108 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="row">
+    <div class="col-12 col-xl-12">
+      <div class="form-group">
+        <%= form.label "Título" %>
+        <%= form.text_field :title, class: "form-control input" %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+  <div class="row">
+    <div class="col-12 col-xl-12">
+      <div class="form-group">
+        <%= form.label "Descripción" %>
+        <%= form.text_area :description, class: "form-control input" %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :discipline %>
-    <%= form.text_field :discipline %>
+  <div class="row">
+    <div class="col-12 col-xl-3">
+      <div class="form-group">
+        <%= form.label "Disciplina" %>
+        <%= form.select(:discipline, options_for_select([['Medicina', 'medicina'], ['Odontología', 'odontologia']]), { prompt: "Selecciona" }, class: "form-control input") %>
+      </div>
+    </div>
+    <div class="col-12 col-xl-3">
+      <div class="form-group">
+        <%= form.label "Tema" %>
+        <%= form.text_field :topic, class: "form-control input" %>
+      </div>
+    </div>
+    <div class="col-12 col-xl-3">
+      <div class="form-group">
+        <%= form.label "Especialidad" %>
+        <%= form.text_field :specialty, class: "form-control input" %>
+      </div>
+    </div>
+    <div class="col-12 col-xl-3">
+      <div class="form-group">
+        <%= form.label "Especialidad 2" %>
+        <%= form.text_field :specialty2, class: "form-control input" %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :topic %>
-    <%= form.text_field :topic %>
+  <div class="row">
+    <div class="col-12 col-xl-3">
+      <div class="form-group">
+        <%= form.label "Precio" %>
+        <%= form.text_field :price, class: "form-control input" %>
+      </div>
+    </div>
+    <div class="col-12 col-xl-3">
+      <div class="form-group">
+        <%= form.label "Edición" %>
+        <%= form.number_field :edition, class: "form-control input" %>
+      </div>
+    </div>
+    <div class="col-12 col-xl-3">
+      <div class="form-group">
+        <%= form.label "Año" %>
+        <%= form.number_field :pub_year, class: "form-control input" %>
+      </div>
+    </div>
+    <div class="col-12 col-xl-3">
+      <div class="form-group">
+        <%= form.label "Páginas" %>
+        <%= form.number_field :pages, class: "form-control input" %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :specialty %>
-    <%= form.text_field :specialty %>
-  </div>
 
-  <div class="field">
-    <%= form.label :speciality2 %>
-    <%= form.text_field :speciality2 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.text_field :price %>
-  </div>
-
-  <div class="field">
-    <%= form.label :edition %>
-    <%= form.number_field :edition %>
-  </div>
-
-  <div class="field">
-    <%= form.label :pub_year %>
-    <%= form.number_field :pub_year %>
-  </div>
-
-  <div class="field">
-    <%= form.label :isbn_10 %>
-    <%= form.text_field :isbn_10 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :isbn_13 %>
-    <%= form.text_field :isbn_13 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :pages %>
-    <%= form.number_field :pages %>
-  </div>
-
-  <div class="field">
-    <%= form.label :size %>
-    <%= form.text_field :size %>
-  </div>
-
-  <div class="field">
-    <%= form.label :cover %>
-    <%= form.text_field :cover %>
-  </div>
-
-  <div class="field">
-    <%= form.label :volumes %>
-    <%= form.text_field :volumes %>
-  </div>
-
-  <div class="field">
-    <%= form.label :index %>
-    <%= form.text_area :index %>
+  <div class="row">
+    <div class="col-12 col-xl-3">
+      <div class="form-group">
+        <%= form.label "Tamaño" %>
+        <%= form.text_field :size, class: "form-control input" %>
+      </div>
+    </div>
+    <div class="col-12 col-xl-3">
+      <div class="form-group">
+        <%= form.label "Cobertura" %>
+        <%= form.text_field :cover, class: "form-control input" %>
+      </div>
+    </div>
+    <div class="col-12 col-xl-3">
+      <div class="form-group">
+        <%= form.label "Tomos" %>
+        <%= form.text_field :volumes, class: "form-control input" %>
+      </div>
+    </div>
+    <div class="col-12 col-xl-3">
+      <div class="form-group">
+        <%= form.label "Índice" %>
+        <%= form.text_area :index, class: "form-control input" %>
+      </div>
+    </div>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Guardar libro", class: "btn btn-primary" %>
   </div>
+  
 <% end %>

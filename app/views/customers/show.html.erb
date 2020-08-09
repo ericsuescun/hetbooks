@@ -1,32 +1,27 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User:</strong>
-  <%= @customer.user %>
-</p>
-
-<p>
-  <strong>Fullname:</strong>
+  <strong>Nombre:</strong>
   <%= @customer.fullname %>
 </p>
 
 <p>
-  <strong>Cel:</strong>
+  <strong>Celular:</strong>
   <%= @customer.cel %>
 </p>
 
 <p>
-  <strong>Tel:</strong>
+  <strong>Teléfono:</strong>
   <%= @customer.tel %>
 </p>
 
 <p>
-  <strong>Address:</strong>
+  <strong>Dirección:</strong>
   <%= @customer.address %>
 </p>
 
 <p>
-  <strong>City:</strong>
+  <strong>Ciudad:</strong>
   <%= @customer.city %>
 </p>
 
@@ -36,19 +31,19 @@
 </p>
 
 <p>
-  <strong>Prof title:</strong>
+  <strong>Título:</strong>
   <%= @customer.prof_title %>
 </p>
 
 <p>
-  <strong>Specialty:</strong>
+  <strong>Especialidad:</strong>
   <%= @customer.specialty %>
 </p>
 
 <p>
-  <strong>Specialty2:</strong>
+  <strong>Especialidad 2:</strong>
   <%= @customer.specialty2 %>
 </p>
 
-<%= link_to 'Edit', edit_customer_path(@customer) %> |
-<%= link_to 'Back', customers_path %>
+<%= link_to 'Editar', edit_customer_path(@customer) %> |
+<%= link_to 'Vovler', customers_path %>
