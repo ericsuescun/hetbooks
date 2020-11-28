@@ -1,6 +1,5 @@
 class Book < ApplicationRecord
 
-
 	require 'csv'
 
 	def self.import(file)
@@ -8,5 +7,7 @@ class Book < ApplicationRecord
 			Book.create!(row.to_hash.merge(user_id: 1))
 		end
 	end
+
+	has_many :pictures, dependent: :destroy
 
 end
