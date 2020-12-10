@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <div class="col-12 col-lg-12 mx-auto">
       <h4>Importar datos</h4>
@@ -6,21 +6,21 @@
         <%= file_field_tag :file %>
         <%= submit_tag "Importar CSV" %>
       <% end %>
-
+      <br>
+      <%= will_paginate @customers, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer %>
+      <br>
       <h1>Clientes</h1>
 
       <table class="table table-striped">
         <thead>
           <tr>
             <th>Nombre</th>
-            <th>Celular</th>
-            <th>Teléfono</th>
+            <th>Teléfonos</th>
             <th>Dirección</th>
-            <th>Ciudad</th>
             <th>Email</th>
             <th>Título</th>
-            <th>Especialidad</th>
-            <th>Otro estudio</th>
+            <th>Espec.</th>
+            <th>Otro</th>
             <th colspan="3"></th>
           </tr>
         </thead>
@@ -29,13 +29,11 @@
           <% @customers.each do |customer| %>
             <tr>
               <td><%= customer.fullname %></td>
-              <td><%= customer.cel %></td>
-              <td><%= customer.tel %></td>
-              <td><%= customer.address %></td>
-              <td><%= customer.city %></td>
+              <td><%= customer.cel.to_s + " - " + customer.tel.to_s %></td>
+              <td><%= customer.city.to_s + " - " + customer.address.to_s %></td>
               <td><%= customer.email %></td>
-              <td><%= customer.prof_title %></td>
-              <td><%= customer.specialty %></td>
+              <td><%= customer.prof_title[0..2] %></td>
+              <td><%= customer.specialty[0..3] %></td>
               <td><%= customer.specialty2 %></td>
               <td><%= link_to 'Detalles', customer %></td>
               <td><%= link_to 'Editar', edit_customer_path(customer) %></td>
