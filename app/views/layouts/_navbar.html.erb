@@ -25,7 +25,7 @@
         
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Usuario: <%= current_user.name %> <%= current_user.lastname %>
+            Usuario: <%= current_user.email %>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <%= link_to "Salir", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
