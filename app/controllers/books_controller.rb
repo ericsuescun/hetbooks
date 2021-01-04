@@ -4,7 +4,7 @@ class BooksController < ApplicationController
 
   def import
     Book.import(params[:file])
-    redirect_to customers_path, notice: "Datos importados!"
+    redirect_to books_path, notice: "Libros importados!"
   end
 
   # GET /books

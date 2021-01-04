@@ -10,83 +10,81 @@
 
       <h1>Libros</h1>
 
-      <div class="card-deck">
-        <% @books.each do |book| %>
-          <div class="card mb-3 mx-3">
-            <div class="row no-gutters">
-              <div class="col-md-4">
-                <img src="..." class="card-img" alt="...">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title"><%= book.title %></h5>
-                  <p class="card-text"><%= book.description %></p>
-                  <div class="row">
-                    <div class="col-4">
-                      <strong>Disciplina:</strong>
-                      <%= book.discipline %>
-                    </div>
-                    <div class="col-4">
-                      <strong>Tema:</strong>
-                      <%= book.topic %>
-                    </div>
-                    <div class="col-4">
-                      <%= book.specialty2 %>
-                    </div>
+      <% @books.each do |book| %>
+        <div class="card mb-3 mx-3">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <img src="..." class="card-img" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title"><%= book.title %></h5>
+                <p class="card-text"><%= book.description %></p>
+                <div class="row">
+                  <div class="col-4">
+                    <strong>Disciplina:</strong>
+                    <%= book.discipline %>
                   </div>
-                  <div class="row">
-                    <div class="col-4">
-                      <strong>Precio:</strong>
-                      <%= book.price %>
-                    </div>
-                    <div class="col-4">
-                      <strong>Edición</strong>
-                      <%= book.edition %>
-                    </div>
-                    <div class="col-4">
-                      <strong>Año de publicación:</strong>
-                      <%= book.pub_year %>
-                    </div>
+                  <div class="col-4">
+                    <strong>Tema:</strong>
+                    <%= book.topic %>
                   </div>
-                  <div class="row">
-                    <div class="col-4">
-                      <strong>Páginas:</strong>
-                      <%= book.pages %>
-                    </div>
-                    <div class="col-4">
-                      <strong>Dimensiones:</strong>
-                      <%= book.size %>
-                    </div>
-                    <div class="col-4">
-                      <strong>Tipo de portada:</strong>
-                      <%= book.cover %>
-                    </div>
+                  <div class="col-4">
+                    <%= book.specialty2 %>
                   </div>
-                   <div class="row">
-                    <div class="col-4">
-                      <strong>Tomo:</strong>
-                      <%= book.volumes %>
-                    </div>
-                    <div class="col-4">
-                      <strong>Índice:</strong>
-                      <%= book.index %>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-12 mt-3 d-flex justify-content-end">
-                      <%= link_to 'Detalles', book, class: "btn btn-primary mr-1" %>
-                      <%= link_to 'Editar', edit_book_path(book), class: "btn btn-primary mr-1" %>
-                      <%= link_to 'Borrar', book, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary mr-1" %>
-                    </div>
-                  </div>
-                  <p class="card-text"><small class="text-muted"><%= book.isbn_10 %></small></p>
-                  <p class="card-text"><small class="text-muted"><%= book.isbn_13 %></small></p>
                 </div>
+                <div class="row">
+                  <div class="col-4">
+                    <strong>Precio:</strong>
+                    <%= book.price %>
+                  </div>
+                  <div class="col-4">
+                    <strong>Edición</strong>
+                    <%= book.edition %>
+                  </div>
+                  <div class="col-4">
+                    <strong>Año de publicación:</strong>
+                    <%= book.pub_year %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-4">
+                    <strong>Páginas:</strong>
+                    <%= book.pages %>
+                  </div>
+                  <div class="col-4">
+                    <strong>Dimensiones:</strong>
+                    <%= book.size %>
+                  </div>
+                  <div class="col-4">
+                    <strong>Tipo de portada:</strong>
+                    <%= book.cover %>
+                  </div>
+                </div>
+                 <div class="row">
+                  <div class="col-4">
+                    <strong>Tomo:</strong>
+                    <%= book.volumes %>
+                  </div>
+                  <div class="col-4">
+                    <strong>Índice:</strong>
+                    <%= book.index %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 mt-3 d-flex justify-content-end">
+                    <%= link_to 'Detalles', book, class: "btn btn-primary mr-1" %>
+                    <%= link_to 'Editar', edit_book_path(book), class: "btn btn-primary mr-1" %>
+                    <%= link_to 'Borrar', book, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary mr-1" %>
+                  </div>
+                </div>
+                <p class="card-text"><small class="text-muted"><%= book.isbn_10 %></small></p>
+                <p class="card-text"><small class="text-muted"><%= book.isbn_13 %></small></p>
               </div>
             </div>
           </div>
-        <% end %>
-      </div>
+        </div>  
+      <% end %>
 
 
 
