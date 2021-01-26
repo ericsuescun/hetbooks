@@ -32,8 +32,8 @@
               <td><%= customer.cel.to_s + " - " + customer.tel.to_s %></td>
               <td><%= customer.city.to_s + " - " + customer.address.to_s %></td>
               <td><%= customer.email %></td>
-              <td><%= customer.prof_title[0..2] %></td>
-              <td><%= customer.specialty[0..3] %></td>
+              <td><%= customer.prof_title %></td>
+              <td><%= customer.specialty %></td>
               <td><%= customer.specialty2 %></td>
               <td><%= link_to 'Detalles', customer %></td>
               <td><%= link_to 'Editar', edit_customer_path(customer) %></td>
