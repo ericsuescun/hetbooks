@@ -1,6 +1,8 @@
 class Customer < ApplicationRecord
   belongs_to :user
 
+  default_scope -> { order(fullname: :asc) }
+
   require 'csv'
 
   def self.import(file)
