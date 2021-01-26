@@ -1,7 +1,7 @@
 class Customer < ApplicationRecord
   belongs_to :user
 
-  default_scope -> { order(fullname: :asc) }
+  default_scope -> { order(prof_title: :asc, specialty: :asc, fullname: :asc) }
 
   require 'csv'
 
