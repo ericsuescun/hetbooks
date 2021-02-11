@@ -9,7 +9,7 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
-    @customers = Customer.all.paginate(page:params[:page], per_page: 10)
+    @customers = Customer.where('fullname like ? AND prof_title like ? AND specialty like ?', '%' + params[:fullname].upcase + '%', '%' + params[:prof_title].upcase + '%', '%' + params[:specialty].upcase + '%').paginate(page:params[:page], per_page: 10)
   end
 
   # GET /customers/1
