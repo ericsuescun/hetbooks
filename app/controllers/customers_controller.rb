@@ -9,7 +9,13 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
-    @customers = Customer.where('fullname like ? AND prof_title like ? AND specialty like ? AND tel like ? AND cel like ?', '%' + params[:fullname].upcase + '%', '%' + params[:prof_title].upcase + '%', '%' + params[:specialty].upcase + '%', '%' + params[:tel].upcase + '%', '%' + params[:cel].upcase + '%').paginate(page:params[:page], per_page: 10)
+    if params.has_key?(:fullname) || params.has_key?(:prof_title) || params.has_key?(:specialty) || params.has_key?(:tel) || params.has_key?(:cel) 
+      @customers = Customer.where('fullname like ? AND prof_title like ? AND specialty like ?', '%' + params[:fullname].upcase + '%', '%' + params[:prof_title].to_s + '%', '%' + params[:specialty].upcase + '%').paginate(page:params[:page], per_page: 10)
+    else
+      @customers = Customer.all.paginate(page:params[:page], per_page: 10)
+    end
+    
+    
   end
 
   # GET /customers/1
