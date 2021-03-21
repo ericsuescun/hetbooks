@@ -9,8 +9,21 @@ class BooksController < ApplicationController
 
   # GET /books
   # GET /books.json
+  # def index
+  #   @books = Book.all
+  # end
+
   def index
-    @books = Book.all
+    if params.has_key?(:title) || params.has_key?(:discipline) || params.has_key?(:topic)
+      if params[:title].present? || params[:discipline].present? || params[:topic].present?
+        @books = Book.all.where('title LIKE ? AND discipline LIKE ? AND topic LIKE ?', '%' + params[:title].upcase + '%', '%' + params[:discipline].upcase + '%', '%' + params[:topic].upcase + '%').paginate(page:params[:page], per_page: 10)
+      else
+        @books = Book.all.paginate(page:params[:page], per_page: 10)
+      end
+
+    else
+      @books = Book.all.paginate(page:params[:page], per_page: 10)
+    end
   end
 
   # GET /books/1

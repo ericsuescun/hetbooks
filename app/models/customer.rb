@@ -11,4 +11,8 @@ class Customer < ApplicationRecord
   	end
   end
 
+  before_save { self.fullname.to_s.upcase! }
+  before_save { self.prof_title.to_s.upcase! }
+  before_save { self.specialty.to_s.upcase! }
+
 end

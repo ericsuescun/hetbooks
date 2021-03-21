@@ -10,4 +10,10 @@ class Book < ApplicationRecord
 
 	has_many :pictures, dependent: :destroy
 
+  default_scope -> { order(title: :asc, discipline: :asc, topic: :asc) }
+
+  before_save { self.title.to_s.upcase! }
+  before_save { self.discipline.to_s.upcase! }
+  before_save { self.topic.to_s.upcase! }
+
 end

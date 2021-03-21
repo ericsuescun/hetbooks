@@ -1,4 +1,5 @@
 class CustomersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
   def import
@@ -9,13 +10,13 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
-    if params.has_key?(:fullname) || params.has_key?(:prof_title) || params.has_key?(:specialty) 
+    if params.has_key?(:fullname) || params.has_key?(:prof_title) || params.has_key?(:specialty)
       @customers = Customer.where('fullname like ? AND prof_title like ? AND specialty like ?', '%' + params[:fullname].upcase + '%', '%' + params[:prof_title].upcase + '%', '%' + params[:specialty].upcase + '%').paginate(page:params[:page], per_page: 10)
     else
         @customers = Customer.all.paginate(page:params[:page], per_page: 10)
     end
-    
-    
+
+
   end
 
   # GET /customers/1
