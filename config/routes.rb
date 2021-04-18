@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :comments
-  resources :pictures
   resources :authors
   resources :books do
+    resources :pictures
     collection { post :import }
   end
 

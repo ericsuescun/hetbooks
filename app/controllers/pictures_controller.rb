@@ -1,74 +1,38 @@
 class PicturesController < ApplicationController
-  before_action :set_picture, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
-  # GET /pictures
-  # GET /pictures.json
-  def index
-    @pictures = Picture.all
-  end
-
-  # GET /pictures/1
-  # GET /pictures/1.json
-  def show
-  end
-
-  # GET /pictures/new
-  def new
-    @picture = Picture.new
-  end
-
-  # GET /pictures/1/edit
-  def edit
-  end
-
-  # POST /pictures
-  # POST /pictures.json
   def create
-    @picture = Picture.new(picture_params)
+    @book = Book.find(params[:book_id])
 
-    respond_to do |format|
-      if @picture.save
-        format.html { redirect_to @picture, notice: 'Picture was successfully created.' }
-        format.json { render :show, status: :created, location: @picture }
+    unless pictures_params[:image] == ""
+      if @book.pictures.create!(pictures_params)
+        redirect_to @book, notice: "Imagen cargada!"
       else
-        format.html { render :new }
-        format.json { render json: @picture.errors, status: :unprocessable_entity }
+        redirect_to @book, notice: "No se puedo cargar la imagen!"
       end
+
+
+    else
+      redirect_to @book, notice: "Sin referencia de imagen! Escoge alguna foto por favor."
+
     end
   end
 
-  # PATCH/PUT /pictures/1
-  # PATCH/PUT /pictures/1.json
-  def update
-    respond_to do |format|
-      if @picture.update(picture_params)
-        format.html { redirect_to @picture, notice: 'Picture was successfully updated.' }
-        format.json { render :show, status: :ok, location: @picture }
-      else
-        format.html { render :edit }
-        format.json { render json: @picture.errors, status: :unprocessable_entity }
-      end
-    end
+  def show
+    redirect_to book_url
   end
 
-  # DELETE /pictures/1
-  # DELETE /pictures/1.json
   def destroy
-    @picture.destroy
-    respond_to do |format|
-      format.html { redirect_to pictures_url, notice: 'Picture was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    book = Book.find(params[:id])
+    book.pictures.where(id: params[:book_id]).take.try(:destroy)
+
+      redirect_to book_path, notice: "La imagen fue eliminada con éxito"
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_picture
-      @picture = Picture.find(params[:id])
+    def pictures_params
+      params.require(:picture).permit(:image, :title, :description)
     end
 
-    # Only allow a list of trusted parameters through.
-    def picture_params
-      params.require(:picture).permit(:book_id, :image, :title, :description)
-    end
+
 end
