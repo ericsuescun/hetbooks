@@ -1,107 +1,100 @@
 <div class="container">
   <div class="row">
     <div class="col-12 col-lg-12 mx-auto">
-      <div class="row">
-        <div class="col-12 col-lg-4">
-          <div class="row">
-            <div class="col-12 col-lg-12">
-              <strong>Imágenes cargadas</strong>
-              <% @pictures.each do |pic| %>
-                <div class="card d-inline-block picManager mx-auto mb-3" style="width: 18rem;">
-                  <img class="card-img-top" src="<%= pic.image.url %>" alt="Card image cap" >
-                  <div class="card-body text-center">
-                    <%= link_to 'Borrar', picture_path(pic), method: :delete, data: { confirm: 'Confirmar borrado?' }, class: "btn btn-sm btn-primary" %>
-                  </div>
+      <div class="jumbotron">
+        <h1 class="display-4"><%= @book.title %></h1>
+        <p class="lead"><%= @book.description %></p>
+        <hr class="my-4">
+        <div class="row">
+          <div class="col-12 col-lg-6">
+            <p><strong>Disciplina:</strong>
+              <%= @book.discipline %>
+            </p>
+
+            <p><strong>Tema:</strong>
+              <%= @book.topic %>
+            </p>
+
+            <p><strong>Especialidad:</strong>
+              <%= @book.specialty %>
+            </p>
+
+            <p><strong>Especialidad 2:</strong>
+              <%= @book.specialty2 %>
+            </p>
+
+            <p><strong>Precio:</strong>
+              <%= @book.price %>
+            </p>
+
+            <p><strong>Edicion:</strong>
+              <%= @book.edition %>
+            </p>
+
+            <p><strong>Año:</strong>
+              <%= @book.pub_year %>
+            </p>
+          </div>
+          <div class="col-12 col-lg-6">
+            <p><strong>Isbn 10:</strong>
+              <%= @book.isbn_10 %>
+            </p>
+
+            <p><strong>Isbn 13:</strong>
+              <%= @book.isbn_13 %>
+            </p>
+
+            <p><strong>Páginas:</strong>
+              <%= @book.pages %>
+            </p>
+
+            <p><strong>Dimensiones:</strong>
+              <%= @book.size %>
+            </p>
+
+            <p><strong>Cubierta:</strong>
+              <%= @book.cover %>
+            </p>
+
+            <p><strong>Tomos:</strong>
+              <%= @book.volumes %>
+            </p>
+
+            <p><strong>Índice:</strong>
+              <%= @book.index %>
+            </p>
+          </div>
+        </div>
+        <hr class="my-4">
+        <div class="row">
+          <div class="col-12 col-lg-6">
+            <strong>Imágenes cargadas</strong>
+            <% @pictures.each do |pic| %>
+              <div class="card d-inline-block picManager mx-auto mb-3" style="width: 18rem;">
+                <img class="card-img-top" src="<%= pic.image.url %>" alt="Card image cap" >
+                <div class="card-body text-center">
+                  <%= link_to 'Borrar', picture_path(pic), method: :delete, data: { confirm: 'Confirmar borrado?' }, class: "btn btn-sm btn-primary" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <% if @book.pictures.length < 3 %>
+            <div class="col-12 col-lg-6">
+              <strong>Agregar imagen</strong>
+              <%= form_for [@book, @book.pictures.build] do |f| %>
+                <div class="actions mb-3 picManager">
+                  <%= f.file_field :image, class: "btn btn-secondary btn-block" %>
+                </div>
+                <p class="mb-0">Máximo 3 fotos de hasta 10MB cada una.</p>
+                <div class="actions">
+                  <%= f.submit "Guardar imagen", class: "btn btn-primary btn-block mb-3" %>
                 </div>
               <% end %>
-              <% if @book.pictures.length < 3 %>
-                <strong>Agregar imagen</strong>
-                <%= form_for [@book, @book.pictures.build] do |f| %>
-                  <div class="actions mb-3 picManager">
-                    <%= f.file_field :image, class: "btn btn-secondary btn-block" %>
-                  </div>
-                  <p class="mb-0">Máximo 3 fotos de hasta 10MB cada una.</p>
-                  <div class="actions">
-                    <%= f.submit "Guardar imagen", class: "btn btn-primary btn-block mb-3" %>
-                  </div>
-                <% end %>
-              <% end %>
             </div>
+          <% end %>
 
-
-          </div>
-        </div>
-        <div class="col-12 col-lg-8">
-          <div class="jumbotron">
-            <h1 class="display-4"><%= @book.title %></h1>
-            <p class="lead"><%= @book.description %></p>
-            <hr class="my-4">
-            <div class="row">
-              <div class="col-12 col-lg-6">
-                <p><strong>Disciplina:</strong>
-                  <%= @book.discipline %>
-                </p>
-
-                <p><strong>Tema:</strong>
-                  <%= @book.topic %>
-                </p>
-
-                <p><strong>Especialidad:</strong>
-                  <%= @book.specialty %>
-                </p>
-
-                <p><strong>Especialidad 2:</strong>
-                  <%= @book.specialty2 %>
-                </p>
-
-                <p><strong>Precio:</strong>
-                  <%= @book.price %>
-                </p>
-
-                <p><strong>Edicion:</strong>
-                  <%= @book.edition %>
-                </p>
-
-                <p><strong>Año:</strong>
-                  <%= @book.pub_year %>
-                </p>
-              </div>
-              <div class="col-12 col-lg-6">
-                <p><strong>Isbn 10:</strong>
-                  <%= @book.isbn_10 %>
-                </p>
-
-                <p><strong>Isbn 13:</strong>
-                  <%= @book.isbn_13 %>
-                </p>
-
-                <p><strong>Páginas:</strong>
-                  <%= @book.pages %>
-                </p>
-
-                <p><strong>Dimensiones:</strong>
-                  <%= @book.size %>
-                </p>
-
-                <p><strong>Cubierta:</strong>
-                  <%= @book.cover %>
-                </p>
-
-                <p><strong>Tomos:</strong>
-                  <%= @book.volumes %>
-                </p>
-
-                <p><strong>Índice:</strong>
-                  <%= @book.index %>
-                </p>
-              </div>
-            </div>
-            <hr class="my-4">
-
-          </div>
         </div>
       </div>
-
       <br>
       <%= link_to 'Editar', edit_book_path(@book) %> |
       <%= link_to 'Volver', books_path %>
