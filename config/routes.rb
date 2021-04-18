@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     collection { post :import }
   end
 
+  resources :pictures
+
   root to: "books#index"
 
   resources :deals

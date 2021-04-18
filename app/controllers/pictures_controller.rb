@@ -19,14 +19,13 @@ class PicturesController < ApplicationController
   end
 
   def show
-    redirect_to book_url
+    @picture = Picture.find(params[:id])
   end
 
   def destroy
-    book = Book.find(params[:id])
-    book.pictures.where(id: params[:book_id]).take.try(:destroy)
-
-      redirect_to book_path, notice: "La imagen fue eliminada con éxito"
+    picture = Picture.find(params[:id])
+    picture.destroy
+    redirect_to book_path(picture.book), notice: "La imagen fue eliminada con éxito"
   end
 
   private
