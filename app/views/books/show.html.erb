@@ -24,7 +24,7 @@
             </p>
 
             <p><strong>Precio:</strong>
-              <%= @book.price %>
+              <%= number_to_currency(@book.price, precision: 0, delimiter: '.') %>
             </p>
 
             <p><strong>Edicion:</strong>

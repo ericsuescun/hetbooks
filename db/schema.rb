@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2020_08_03_000339) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "authors", force: :cascade do |t|
     t.string "name"
     t.string "lastname"
@@ -44,7 +47,7 @@ ActiveRecord::Schema.define(version: 2020_08_03_000339) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer "customer_id"
+    t.bigint "customer_id"
     t.string "title"
     t.text "description"
     t.datetime "created_at", null: false
@@ -53,7 +56,7 @@ ActiveRecord::Schema.define(version: 2020_08_03_000339) do
   end
 
   create_table "customers", force: :cascade do |t|
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "fullname"
     t.string "cel"
     t.string "tel"
@@ -69,7 +72,7 @@ ActiveRecord::Schema.define(version: 2020_08_03_000339) do
   end
 
   create_table "deals", force: :cascade do |t|
-    t.integer "book_id"
+    t.bigint "book_id"
     t.string "name"
     t.string "contact"
     t.datetime "created_at", null: false
@@ -78,7 +81,7 @@ ActiveRecord::Schema.define(version: 2020_08_03_000339) do
   end
 
   create_table "pictures", force: :cascade do |t|
-    t.integer "book_id"
+    t.bigint "book_id"
     t.string "image"
     t.string "title"
     t.text "description"
@@ -103,4 +106,8 @@ ActiveRecord::Schema.define(version: 2020_08_03_000339) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "customers"
+  add_foreign_key "customers", "users"
+  add_foreign_key "deals", "books"
+  add_foreign_key "pictures", "books"
 end
