@@ -47,6 +47,7 @@ gem 'will_paginate', '~> 3.1.1'
 gem 'bootstrap-will_paginate'
 gem 'carrierwave',             '1.2.2'
 gem "mini_magick", ">= 4.9.4"
+gem 'twilio-ruby', '~> 5.62.0'
 
 
 

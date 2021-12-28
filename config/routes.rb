@@ -11,6 +11,12 @@ Rails.application.routes.draw do
 
   resources :pictures
 
+  resources :twilio_messages do
+    collection do
+      get 'send_wa_message', to: 'twilio_messages#create', as: 'send_wa'
+    end
+  end
+
   root to: "books#index"
 
   resources :deals

@@ -66,6 +66,7 @@
               <td><%= customer.prof_title %></td>
               <td><%= customer.specialty %></td>
               <td><%= customer.specialty2 %></td>
+              <td><%= link_to 'Enviar WA', twilio_message_path(customer), local: true %></td>
               <td><%= link_to 'Detalles', customer %></td>
               <td><%= link_to 'Editar', edit_customer_path(customer) %></td>
               <td><%= link_to 'Borrar', customer, method: :delete, data: { confirm: '¿Confirmas la operación?' } %></td>
