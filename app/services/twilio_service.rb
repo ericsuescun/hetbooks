@@ -14,7 +14,7 @@ class TwilioService
                                    to: "whatsapp:#{wa_msg_params[:cel_number]}"
                                  )
     rescue Twilio::REST::TwilioError => e
-      raise_error_request('Twilio error: ', Array(e.message))
+      puts e.message
     end
 
     message.status
@@ -32,9 +32,5 @@ class TwilioService
 
   def client
     @client ||= Twilio::REST::Client.new(account_sid, auth_token)
-  end
-
-  def raise_error_request(message = 'An error has occurred during the request', errors = [])
-    raise RestError.new(message, errors)
   end
 end
