@@ -11,7 +11,7 @@ class TwilioMessagesController < ApplicationController
     customer = Customer.find(params[:customer_id])
     cel_number = customer.cel
 
-    body = "#{request.protocol}#{request.host_with_port}/books/#{params[:book_id]}"
+    body = "https://hetbooks.herokuapp.com/books/#{params[:book_id]}"
     cel_number_data = "+57#{cel_number}"
     message = "#{body} no enviado a #{cel_number_data}"
 
