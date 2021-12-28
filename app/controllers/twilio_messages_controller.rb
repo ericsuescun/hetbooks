@@ -20,7 +20,7 @@ class TwilioMessagesController < ApplicationController
       wa_msg_params = { message: body, cel_number: cel_number }
 
       wa_message = ts.send_wa_message(wa_msg_params)
-      message = wa_message.status
+      message = wa_message
     end
 
     redirect_to "#{request.protocol}#{request.host_with_port}/twilio_messages/#{params[:customer_id]}", notice: "Estado del mensaje: #{message}"
