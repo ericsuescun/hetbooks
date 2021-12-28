@@ -17,7 +17,7 @@ class TwilioMessagesController < ApplicationController
 
     if cel_number.present? && cel_number.size == 10
 
-      wa_msg_params = { message: body, cel_number: cel_number }
+      wa_msg_params = { message: body, cel_number: cel_number_data }
 
       wa_message = ts.send_wa_message(wa_msg_params)
       message = wa_message
