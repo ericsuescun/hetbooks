@@ -11,11 +11,16 @@ class TwilioMessagesController < ApplicationController
     customer = Customer.find(params[:customer_id])
     cel_number = customer.cel
 
-    body = "#{request.protocol}#{request.host_with_port}/books/#{params[:book_id]}"
-    wa_msg_params = { message: body, cel_number: "+57#{cel_number}" }
+    message = 'no enviado'
 
-    wa_message = ts.send_wa_message(wa_msg_params)
+    if cel_number.present? && cel_number.size == 10
+      body = "#{request.protocol}#{request.host_with_port}/books/#{params[:book_id]}"
+      wa_msg_params = { message: body, cel_number: "+57#{cel_number}" }
 
-    redirect_to "#{request.protocol}#{request.host_with_port}/twilio_messages/#{params[:customer_id]}", notice: wa_message
+      wa_message = ts.send_wa_message(wa_msg_params)
+      message = wa_message.status
+    end
+
+    redirect_to "#{request.protocol}#{request.host_with_port}/twilio_messages/#{params[:customer_id]}", notice: "Estado del mensaje: #{message}"
   end
 end
