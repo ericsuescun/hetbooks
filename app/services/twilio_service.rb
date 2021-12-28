@@ -6,7 +6,7 @@ class TwilioService
 
   def send_wa_message(wa_msg_params)
     message = nil
-    debugger
+
     begin
       message = client.messages.create(
                                    from: "whatsapp:+14155238886",
