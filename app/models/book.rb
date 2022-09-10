@@ -15,7 +15,7 @@ class Book < ApplicationRecord
       speciality2 = Speciality.find_or_create_by(title: data[:speciality2].to_s.upcase)
       author = Author.find_or_create_by(name: data[:author].to_s.upcase)
 
-      book = Book.new(title: data[:title],
+      book = Book.new(title: data[:fullname],
       								description: data[:description],
       								topic: data[:topic],
       								price: data[:price],
