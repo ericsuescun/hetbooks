@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-lg-12 mx-auto">
+      <div class="jumbotron">
+        <h1 class="display-4"><%= @speciality.title %></h1>
+        <p class="lead"><%= @speciality.description %></p>
+        <hr class="my-4">
+        <div class="row">
+          <div class="col-12 col-lg-6">
+          </div>
+        </div>
+
+      <br>
+      <%= link_to 'Editar', edit_speciality_path(@speciality) %> |
+      <%= link_to 'Volver', specialities_path %>
+
+    </div>
+  </div>
+</div>

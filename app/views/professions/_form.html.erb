@@ -1,0 +1,35 @@
+<%= form_with model: profession do |form| %>
+  <% if profession.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(profession.errors.count, "error") %> prohibited this profession from being saved:</h2>
+
+      <ul>
+      <% profession.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-12 col-xl-12">
+      <div class="form-group">
+        <%= form.label "Título" %>
+        <%= form.text_field :title, class: "form-control input" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-xl-12">
+      <div class="form-group">
+        <%= form.label "Descripción" %>
+        <%= form.text_area :description, class: "form-control input" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: "btn btn-primary"%>
+  </div>
+<% end %>

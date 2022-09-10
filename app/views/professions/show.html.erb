@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-lg-12 mx-auto">
+      <div class="jumbotron">
+        <h1 class="display-4"><%= @profession.title %></h1>
+        <p class="lead"><%= @profession.description %></p>
+        <hr class="my-4">
+        <div class="row">
+          <div class="col-12 col-lg-6">
+          </div>
+        </div>
+
+      <br>
+      <%= link_to 'Editar', edit_profession_path(@profession) %> |
+      <%= link_to 'Volver', professions_path %>
+
+    </div>
+  </div>
+</div>

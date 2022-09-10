@@ -32,18 +32,35 @@
 
 <p>
   <strong>Título:</strong>
-  <%= @customer.prof_title %>
+  <% @customer.professions.each do |profession| %>
+    <%= profession.title %>
+  <% end %>
 </p>
 
-<p>
-  <strong>Especialidad:</strong>
-  <%= @customer.specialty %>
-</p>
+<% @customer.specialities.each do |speciality| %>
+  <p>Especialidad: <%= speciality.title %></p>
+    <table class="table table-striped dense">
+      <head>
+        <tr>
+          <th>Título</th>
+          <th>Descripción</th>
+          <th>Tópico</th>
+        </tr>
+      </head>
+      <body>
+        <% Book.joins(:specialities).where(specialities: { title: speciality.title }).each do |book| %>
+          <tr class="m-0 p-0">
+            <td class="p-0"><%= book.title %></td>
+            <td class="p-0"><%= book.description %></td>
+            <td class="p-0"><%= book.topic %></td>
 
-<p>
-  <strong>Especialidad 2:</strong>
-  <%= @customer.specialty2 %>
-</p>
+          </tr>
+        <% end %>
+      </body>
+    </table>
+
+<% end %>
+
 
 <%= link_to 'Editar', edit_customer_path(@customer) %> |
 <%= link_to 'Vovler', customers_path %>

@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-lg-12 mx-auto">
+      <h1>Especializaciones</h1>
+
+      <%= will_paginate @specialities, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer %>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Título</th>
+            <th>Descripción</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @specialities.each do |speciality| %>
+            <tr>
+              <td><%= speciality.title %></td>
+              <td><%= speciality.description %></td>
+              <td><%= link_to 'Detalles', speciality %></td>
+              <td><%= link_to 'Editar', edit_speciality_path(speciality) %></td>
+              <td><%= link_to 'Borrar', speciality, method: :delete, data: { confirm: '¿Confirmas la operación?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= link_to 'Nueva especialización', new_speciality_path %>
+    </div>
+  </div>
+</div>

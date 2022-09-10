@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_03_000339) do
+ActiveRecord::Schema.define(version: 2022_09_10_190819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,13 +25,22 @@ ActiveRecord::Schema.define(version: 2020_08_03_000339) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "authors_books", id: false, force: :cascade do |t|
+    t.bigint "author_id", null: false
+    t.bigint "book_id", null: false
+    t.bigint "authors_id"
+    t.bigint "books_id"
+    t.index ["authors_id"], name: "index_authors_books_on_authors_id"
+    t.index ["books_id"], name: "index_authors_books_on_books_id"
+  end
+
   create_table "books", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.string "discipline"
+    t.string "profession"
     t.string "topic"
-    t.string "specialty"
-    t.string "specialty2"
+    t.string "speciality"
+    t.string "speciality2"
     t.decimal "price"
     t.integer "edition"
     t.integer "pub_year"
@@ -44,6 +53,21 @@ ActiveRecord::Schema.define(version: 2020_08_03_000339) do
     t.text "index"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "author", default: ""
+  end
+
+  create_table "books_professions", id: false, force: :cascade do |t|
+    t.bigint "book_id"
+    t.bigint "profession_id"
+    t.index ["book_id"], name: "index_books_professions_on_book_id"
+    t.index ["profession_id"], name: "index_books_professions_on_profession_id"
+  end
+
+  create_table "books_specialities", id: false, force: :cascade do |t|
+    t.bigint "book_id"
+    t.bigint "speciality_id"
+    t.index ["book_id"], name: "index_books_specialities_on_book_id"
+    t.index ["speciality_id"], name: "index_books_specialities_on_speciality_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -63,12 +87,23 @@ ActiveRecord::Schema.define(version: 2020_08_03_000339) do
     t.string "address"
     t.string "city"
     t.string "email"
-    t.string "prof_title"
-    t.string "specialty"
-    t.string "specialty2"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_customers_on_user_id"
+  end
+
+  create_table "customers_professions", id: false, force: :cascade do |t|
+    t.bigint "customer_id"
+    t.bigint "profession_id"
+    t.index ["customer_id"], name: "index_customers_professions_on_customer_id"
+    t.index ["profession_id"], name: "index_customers_professions_on_profession_id"
+  end
+
+  create_table "customers_specialities", id: false, force: :cascade do |t|
+    t.bigint "customer_id"
+    t.bigint "speciality_id"
+    t.index ["customer_id"], name: "index_customers_specialities_on_customer_id"
+    t.index ["speciality_id"], name: "index_customers_specialities_on_speciality_id"
   end
 
   create_table "deals", force: :cascade do |t|
@@ -88,6 +123,20 @@ ActiveRecord::Schema.define(version: 2020_08_03_000339) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_pictures_on_book_id"
+  end
+
+  create_table "professions", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "specialities", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

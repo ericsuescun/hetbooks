@@ -22,7 +22,6 @@
                 </div>
                 <div class="col-12 col-lg-2">
                   <div class="form-group">
-                    <%= search_field_tag :discipline, params[:discipline], placeholder: "Disciplina", class: "form-control" %>
                   </div>
                 </div>
                 <div class="col-12 col-lg-2">
@@ -51,6 +50,10 @@
               <% else %>
                 <img src="..." class="card-img" alt="...">
               <% end %>
+              <% book.authors.each do |author| %>
+                <p class="card-text"><%= author.name %></p>
+              <% end %>
+
 
             </div>
             <div class="col-md-8">
@@ -59,15 +62,16 @@
                 <p class="card-text"><%= book.description %></p>
                 <div class="row">
                   <div class="col-4">
-                    <strong>Disciplina:</strong>
-                    <%= book.discipline %>
+                    <strong>Profesión:</strong>
+                      <% book.professions.each do |profession| %>
+                        <%= profession.title %>
+                      <% end %>
                   </div>
                   <div class="col-4">
                     <strong>Tema:</strong>
                     <%= book.topic %>
                   </div>
                   <div class="col-4">
-                    <%= book.specialty2 %>
                   </div>
                 </div>
                 <div class="row">
@@ -106,6 +110,12 @@
                   <div class="col-4">
                     <strong>Índice:</strong>
                     <%= book.index %>
+                  </div>
+                  <div class="col-4">
+                    <strong>Especialidades:</strong>
+                    <% book.specialities.each do |speciality| %>
+                      <%= speciality.title %>
+                    <% end %>
                   </div>
                 </div>
                 <div class="row">

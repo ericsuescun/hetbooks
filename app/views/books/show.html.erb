@@ -7,20 +7,25 @@
         <hr class="my-4">
         <div class="row">
           <div class="col-12 col-lg-6">
-            <p><strong>Disciplina:</strong>
-              <%= @book.discipline %>
+            <p><strong>Autor:</strong>
+              <% @book.authors.each do |author| %>
+                <p class="card-text"><%= author.name %></p>
+              <% end %>
+            </p>
+            <p><strong>Profesión:</strong>
+              <% @book.professions.each do |profession| %>
+                <%= profession.title %>
+              <% end %>
             </p>
 
             <p><strong>Tema:</strong>
               <%= @book.topic %>
             </p>
 
-            <p><strong>Especialidad:</strong>
-              <%= @book.specialty %>
-            </p>
-
-            <p><strong>Especialidad 2:</strong>
-              <%= @book.specialty2 %>
+            <p><strong>Especialidades:</strong>
+              <% @book.specialities.each do |speciality| %>
+                <%= speciality.title %>
+              <% end %>
             </p>
 
             <p><strong>Precio:</strong>
