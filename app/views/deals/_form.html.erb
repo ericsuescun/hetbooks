@@ -16,21 +16,21 @@
 
         <div class="form-group">
           <%= form.label "Libro" %>
-          <%= form.text_field :book_id, placeholder: book_id, value: book_id, class: "form-control input" %>
+          <%= form.text_field :book_id, placeholder: book_id, value: book_id, class: "form-control form-control-lg input" %>
         </div>
 
         <div class="form-group">
           <%= form.label "Tu nombre" %>
-          <%= form.text_field :name, class: "form-control input" %>
+          <%= form.text_field :name, class: "form-control form-control-lg input" %>
         </div>
 
         <div class="form-group">
           <%= form.label "Número de contacto/email" %>
-          <%= form.text_field :contact, class: "form-control input" %>
+          <%= form.text_field :contact, class: "form-control form-control-lg input" %>
         </div>
 
         <div class="actions">
-          <%= form.submit  "Contáctame!", class: "btn btn-success" %>
+          <%= form.submit  "Contáctame!", class: "btn btn-success btn-lg btn-block" %>
         </div>
       <% end %>
     </div>
