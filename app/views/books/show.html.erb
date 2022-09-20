@@ -1,6 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="col-12 col-lg-12 mx-auto">
+
+      <% if current_user.blank? %>
+        <div class="col-12 col-lg-4 mx-auto">
+          <div class="alert alert-success">Lo quiero!</div>
+          <%= render 'deals/form', deal: @deal, book_id: @book.title %>
+        </div>
+        <div class="col-12 col-lg-8 mx-auto">
+      <% else %>
+        <div class="col-12 col-lg-12 mx-auto">
+      <% end %>
       <div class="jumbotron">
         <h1 class="display-4"><%= @book.title %></h1>
         <p class="lead"><%= @book.description %></p>
@@ -71,37 +80,43 @@
           </div>
         </div>
         <hr class="my-4">
-        <div class="row">
-          <div class="col-12 col-lg-6">
-            <strong>Imágenes cargadas</strong>
-            <% @pictures.each do |pic| %>
-              <div class="card d-inline-block picManager mx-auto mb-3" style="width: 18rem;">
-                <img class="card-img-top" src="<%= pic.image.url %>" alt="Card image cap" >
-                <div class="card-body text-center">
-                  <%= link_to 'Borrar', picture_path(pic), method: :delete, data: { confirm: 'Confirmar borrado?' }, class: "btn btn-sm btn-primary" %>
-                </div>
-              </div>
-            <% end %>
-          </div>
-          <% if @book.pictures.length < 3 %>
+        <% if current_user.present? %>
+          <div class="row">
             <div class="col-12 col-lg-6">
-              <strong>Agregar imagen</strong>
-              <%= form_for [@book, @book.pictures.build] do |f| %>
-                <div class="actions mb-3 picManager">
-                  <%= f.file_field :image, class: "btn btn-secondary btn-block" %>
-                </div>
-                <p class="mb-0">Máximo 3 fotos de hasta 10MB cada una.</p>
-                <div class="actions">
-                  <%= f.submit "Guardar imagen", class: "btn btn-primary btn-block mb-3" %>
+              <strong>Imágenes cargadas</strong>
+              <% @pictures.each do |pic| %>
+                <div class="card d-inline-block picManager mx-auto mb-3" style="width: 18rem;">
+                  <img class="card-img-top" src="<%= pic.image.url %>" alt="Card image cap" >
+                  <div class="card-body text-center">
+                    <%= link_to 'Borrar', picture_path(pic), method: :delete, data: { confirm: 'Confirmar borrado?' }, class: "btn btn-sm btn-primary" %>
+                  </div>
                 </div>
               <% end %>
             </div>
-          <% end %>
+            <% if @book.pictures.length < 3 %>
+              <div class="col-12 col-lg-6">
+                <strong>Agregar imagen</strong>
+                <%= form_for [@book, @book.pictures.build] do |f| %>
+                  <div class="actions mb-3 picManager">
+                    <%= f.file_field :image, class: "btn btn-secondary btn-block" %>
+                  </div>
+                  <p class="mb-0">Máximo 3 fotos de hasta 10MB cada una.</p>
+                  <div class="actions">
+                    <%= f.submit "Guardar imagen", class: "btn btn-primary btn-block mb-3" %>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
 
-        </div>
+          </div>
+        <% end %>
+
       </div>
       <br>
-      <%= link_to 'Editar', edit_book_path(@book) %> |
+      <% if current_user.present? %>
+        <%= link_to 'Editar', edit_book_path(@book) %>
+      <% end %>
+       |
       <%= link_to 'Volver', books_path %>
 
     </div>

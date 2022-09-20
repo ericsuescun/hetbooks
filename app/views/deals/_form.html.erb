@@ -1,32 +1,38 @@
-<%= form_with(model: deal, local: true) do |form| %>
-  <% if deal.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(deal.errors.count, "error") %> prohibited this deal from being saved:</h2>
+<div class="conatiner">
+  <div class="row">
+    <div class="col-12">
+      <%= form_with(model: deal, local: true) do |form| %>
+        <% if deal.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(deal.errors.count, "error") %> prohibited this deal from being saved:</h2>
 
-      <ul>
-      <% deal.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+            <ul>
+            <% deal.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="form-group">
+          <%= form.label "Libro" %>
+          <%= form.text_field :book_id, placeholder: book_id, value: book_id, class: "form-control input" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label "Tu nombre" %>
+          <%= form.text_field :name, class: "form-control input" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label "Número de contacto/email" %>
+          <%= form.text_field :contact, class: "form-control input" %>
+        </div>
+
+        <div class="actions">
+          <%= form.submit  "Contáctame!", class: "btn btn-success" %>
+        </div>
       <% end %>
-      </ul>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :book_id %>
-    <%= form.text_field :book_id %>
   </div>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :contact %>
-    <%= form.text_field :contact %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

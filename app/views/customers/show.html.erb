@@ -4,38 +4,40 @@
   <strong>Nombre:</strong>
   <%= @customer.fullname %>
 </p>
+<% if current_user.present? %>
+  <p>
+    <strong>Celular:</strong>
+    <%= @customer.cel %>
+  </p>
 
-<p>
-  <strong>Celular:</strong>
-  <%= @customer.cel %>
-</p>
+  <p>
+    <strong>Teléfono:</strong>
+    <%= @customer.tel %>
+  </p>
 
-<p>
-  <strong>Teléfono:</strong>
-  <%= @customer.tel %>
-</p>
+  <p>
+    <strong>Dirección:</strong>
+    <%= @customer.address %>
+  </p>
 
-<p>
-  <strong>Dirección:</strong>
-  <%= @customer.address %>
-</p>
+  <p>
+    <strong>Ciudad:</strong>
+    <%= @customer.city %>
+  </p>
 
-<p>
-  <strong>Ciudad:</strong>
-  <%= @customer.city %>
-</p>
+  <p>
+    <strong>Email:</strong>
+    <%= @customer.email %>
+  </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @customer.email %>
-</p>
+  <p>
+    <strong>Título:</strong>
+    <% @customer.professions.each do |profession| %>
+      <%= profession.title %>
+    <% end %>
+  </p>
 
-<p>
-  <strong>Título:</strong>
-  <% @customer.professions.each do |profession| %>
-    <%= profession.title %>
-  <% end %>
-</p>
+<% end %>
 
 <% @customer.specialities.each do |speciality| %>
   <p>Especialidad: <%= speciality.title %></p>
@@ -45,15 +47,15 @@
           <th>Título</th>
           <th>Descripción</th>
           <th>Tópico</th>
+          <th>Tópico</th>
         </tr>
       </head>
       <body>
-        <% Book.joins(:specialities).where(specialities: { title: speciality.title }).each do |book| %>
+        <% Book.joins(:specialities).where(specialities: { title: speciality.title }).limit(5).each do |book| %>
           <tr class="m-0 p-0">
-            <td class="p-0"><%= book.title %></td>
-            <td class="p-0"><%= book.description %></td>
+            <td class="p-0"><%= link_to "#{book.title}", book %></td>
+            <td class="p-0"><%= book.description[0..300] + '...' %></td>
             <td class="p-0"><%= book.topic %></td>
-
           </tr>
         <% end %>
       </body>
@@ -61,6 +63,8 @@
 
 <% end %>
 
-
-<%= link_to 'Editar', edit_customer_path(@customer) %> |
-<%= link_to 'Vovler', customers_path %>
+<% if current_user.present? %>
+  <%= link_to 'Editar', edit_customer_path(@customer) %>
+<% end %>
+ |
+<%= link_to 'Volver', customers_path %>

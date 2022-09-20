@@ -30,6 +30,7 @@ class BooksController < ApplicationController
   # GET /books/1.json
   def show
     @pictures = @book.pictures
+    @deal = Deal.new
   end
 
   # GET /books/new

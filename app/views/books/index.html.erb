@@ -1,10 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col-12 col-lg-12 mx-auto">
-      <h4>Importar datos</h4>
-      <%= form_tag import_books_path, multipart: true do %>
-        <%= file_field_tag :file %>
-        <%= submit_tag "Importar CSV" %>
+      <% if current_user.present? %>
+        <h4>Importar datos</h4>
+        <%= form_tag import_books_path, multipart: true do %>
+          <%= file_field_tag :file %>
+          <%= submit_tag "Importar CSV" %>
+        <% end %>
       <% end %>
 
 
