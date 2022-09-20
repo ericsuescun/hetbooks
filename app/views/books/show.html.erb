@@ -3,7 +3,7 @@
 
       <% if current_user.blank? %>
         <div class="col-12 col-lg-4 mx-auto">
-          <div class="alert alert-success">Lo quiero!</div>
+          <div class="alert alert-success big">Lo quiero!</div>
           <%= render 'deals/form', deal: @deal, book_id: @book.title %>
         </div>
         <div class="col-12 col-lg-8 mx-auto">
