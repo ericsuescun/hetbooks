@@ -6,7 +6,7 @@
           <div class="alert alert-success big">Lo quiero!</div>
           <%= render 'deals/form', deal: @deal, book_id: @book.title %>
         </div>
-        <% if book.pictures.length > 0  %>
+        <% if @book.pictures.length > 0  %>
           <img src="<%= @book.pictures.first.image.url %>" class="card-img" alt="..." width="200" height="200">
         <% else %>
           <img src="..." class="card-img" alt="...">
