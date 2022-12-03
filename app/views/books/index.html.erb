@@ -48,7 +48,9 @@
           <div class="row no-gutters">
             <div class="col-md-4">
               <% if book.pictures.length > 0  %>
-                <img src="<%= book.pictures.first.image.url %>" class="card-img" alt="...">
+                <%= link_to book, class: "btn btn-primary mr-1" do %>
+                  <img src="<%= book.pictures.first.image.url %>" class="card-img" alt="...">
+                <% end %>
               <% else %>
                 <img src="..." class="card-img" alt="...">
               <% end %>
